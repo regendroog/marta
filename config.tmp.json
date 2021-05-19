@@ -1,0 +1,8 @@
+{
+	"prefix": "", //prefix
+	"token": "", //bot token
+	"ownerID": "", //your id
+	"guildID": "" //guild id for the slash command(s)
+}
+
+//DELETE .tmp FROM THE NAME SO ITS config.json!!!!

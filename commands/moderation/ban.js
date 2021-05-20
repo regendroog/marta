@@ -2,6 +2,7 @@ module.exports = {
 	name: 'ban',
 	description: 'Ban someone from a server!',
 	guildOnly: true,
+	permissions: 'BAN_MEMBERS',
 	execute(message) {
 		const user = message.mentions.users.first();
     if (user) {
@@ -24,3 +25,5 @@ module.exports = {
     } 	
 	},
 };
+
+

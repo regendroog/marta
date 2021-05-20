@@ -2,6 +2,7 @@ module.exports = {
 	name: 'kick',
 	description: 'Kick someone from a server!',
 	guildOnly: true,
+	permissions: 'KICK_MEMBERS',
 	execute(message) {
 		const user = message.mentions.users.first();
     if (user) {

@@ -1,5 +1,6 @@
 const fs = require('fs');
 const Discord = require('discord.js');
+require('discord-reply');
 const { prefix, token, ownerID, PREFIX } = require('./config.json');
 const { Op } = require('sequelize');
 const { Users, CurrencyShop } = require('./dbObjects')
@@ -7,7 +8,7 @@ const currency = new Discord.Collection();
 const Sequelize = require('sequelize');
 const config = require('./config.json');
 
-const client = new Discord.Client({ ws: { properties: { $browser: "Discord iOS" }} });
+const client = new Discord.Client({ ws: { properties: { $browser: "Discord iOS" }} }) 
 const disbut = require('discord-buttons')(client);
 client.commands = new Discord.Collection();
 client.cooldowns = new Discord.Collection();
@@ -250,42 +251,9 @@ client.on('message', async message => {
 	}
 });
 
-client.on('message', async message => {
-	if (message.content.startsWith(prefix + "button")) {
-		const btn = new disbut.MessageButton()
-		 .setStyle('green')
-		 .setLabel('Click Here!')
-		 .setID('clickTo');//a id , custom
-		let msg = await message.channel.send('Click for ping', {button:btn}); 
-		client.on('clickButton', async (button) => {
-			if (button.id === 'clickTo') {
-				await button.defer(); 
-		  		msg.edit('The ping, ' + client.ws.ping + 'ms', {button:btn});
-			}
-		});
-	} 		
-});
 
-client.on('message', async message => {
-	if (message.content.startsWith(prefix + "penis")) {
-		const button = new disbut.MessageButton()
-  		.setStyle('red') //default: blurple
-  		.setLabel('Click here to delete this message') //default: NO_LABEL_PROVIDED
-  		.setID('click_to_function') //note: if you use the style "url" you must provide url using .setURL('https://example.com')
-  		//.setDisabled(); //disables the button | default: false
 
-		const button2 = new disbut.MessageButton()
-  		.setStyle('url') //default: blurple
-  		.setLabel('My Second Button!') //default: NO_LABEL_PROVIDED
-  		.setURL('https://www.google.com/') //note: if you use other style you must provide id using .setID('myid')
 
-		message.channel.send('Wassup, some buttons down here WW', {
-			buttons: [
-				button, button2
- 			]
-		});
-	}
-});
 
 client.login(token);
 

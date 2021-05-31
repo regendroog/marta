@@ -38,7 +38,7 @@ const bc= '⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⣱⡐⡕
 module.exports = {
   name: 'obama',
 	description: 'You want to see Obama?',
-  execute (message, args) {
+  execute (message) {
     message.channel.send (o +'\n' + b +'\n' + a+'\n' + m +'\n' + a2 +'\n' + aa +'\n' + ab +'\n' + ac +'\n' +ad+'\n' +ae+'\n' +af+'\n' +ag+'\n' +ah+'\n' +ai+'\n' +aj+'\n' +ak+'\n' +al+'\n' +am+'\n' +an+'\n' +ao+'\n' +ap+'\n' +aq+'\n' +ar+'\n' + a_+'\n' +at+'\n' +au+'\n' +av+'\n' +aw+'\n' +ax+'\n' +ay+'\n' +az+'\n' +ba+'\n' +bb+'\n' +bc)
   }
 }

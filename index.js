@@ -1,4 +1,5 @@
 const fs = require('fs');
+const guilds = require('./guilds.json');
 const Discord = require('discord.js');
 require('discord-reply');
 const { prefix, token, ownerID, PREFIX } = require('./config.json');
@@ -251,8 +252,28 @@ client.on('message', async message => {
 	}
 });
 
+client.on('message', message => {
+	if (!message.author.bot) {
+		if (!guilds[message.guild.id]) guilds[message.guild.id] = { messageCount: 1 };
+		else guilds[message.guild.id].messageCount++;
+	
+		try {
+		  fs.writeFileSync('./guilds.json', JSON.stringify(guilds)); 
+		} catch(err) {
+		  console.error(err);
+		}
+	}
+});
 
 
+
+client.on('message', msg => { // Message function
+	const messageCount = guilds[msg.guild.id].messageCount;
+	if (msg.content.startsWith(".count")) { 
+		msg.channel.send(`**${messageCount}** message${messageCount !== 1 ? 's' : ''} sent.`)
+		.catch(console.error);
+	}
+});
 
 
 client.login(token);

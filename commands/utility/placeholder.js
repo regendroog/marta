@@ -54,16 +54,18 @@ module.exports = {
                         `**Explicit Filter:** ${filterLevels[message.guild.explicitContentFilter]}`,
                         `**Verification Level:** ${verificationLevels[message.guild.verificationLevel]}`,
                         `**Time Created:** ${moment(message.guild.createdTimestamp).format('LT')} ${moment(message.guild.createdTimestamp).format('LL')} [${moment(message.guild.createdTimestamp).fromNow()}]`,
-                        '\u200b'
+                        '\u200b', 
+                        true
                 ])
                 .addField('__Presence__', [
                         `**Online:** ${members.filter(member => member.presence.status === 'online').size}`,
                         `**Idle:** ${members.filter(member => member.presence.status === 'idle').size}`,
                         `**Do Not Disturb:** ${members.filter(member => member.presence.status === 'dnd').size}`,
                         `**Offline:** ${members.filter(member => member.presence.status === 'offline').size}`,
-                        '\u200b'
+                        '\u200b', 
+                        true
                 ])
-                .addField(`__Roles__ [${roles.length - 1}]`, roles.join(', '))
+                .addField(`__Roles__ [${roles.length - 1}]`, roles.join(', '), true)
                 message.channel.send({embed});
 	},
 };

@@ -9,7 +9,7 @@ const currency = new Discord.Collection();
 const Sequelize = require('sequelize');
 const config = require('./config.json');
 
-const client = new Discord.Client({ ws: { properties: { $browser: "Discord iOS" }} }) 
+const client = new Discord.Client/*({ ws: { properties: { $browser: "Discord iOS" }} })*/
 const disbut = require('discord-buttons')(client);
 client.commands = new Discord.Collection();
 client.cooldowns = new Discord.Collection();
@@ -264,10 +264,7 @@ client.on('message', message => {
 		}
 	}
 });
-
-
-
-client.on('message', msg => { // Message function
+client.on('message', msg => { 
 	const messageCount = guilds[msg.guild.id].messageCount;
 	if (msg.content.startsWith(".count")) { 
 		msg.channel.send(`**${messageCount}** message${messageCount !== 1 ? 's' : ''} sent.`)
@@ -275,6 +272,15 @@ client.on('message', msg => { // Message function
 	}
 });
 
+/*
+client.on('message', msg => { 
+	const messageCount = guilds[guild.id].messageCount;
+	if (msg.content.startsWith(".servercount")) { 
+		msg.channel.send(`**${messageCount}** message${messageCount !== 1 ? 's' : ''} sent.`)
+		.catch(console.error);
+	}
+});
+*/
 
 client.login(token);
 

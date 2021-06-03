@@ -1,0 +1,9 @@
+module.exports = {
+	name: 'guildMemberUpdate',
+	async execute(message, oldMember, newMember) {
+        let muterole = message.guild.roles.cache.find(x => x.name === "muted");
+		if (!newMember.roles.cache.has(muterole) && oldMember.roles.cache.has(muterole)) {
+            await newMember.roles.add(muterole);
+        }
+	},
+};
